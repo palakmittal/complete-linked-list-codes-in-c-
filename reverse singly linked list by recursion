@@ -1,0 +1,37 @@
+// solution is by using recursion
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+
+
+class Solution {
+public:
+    ListNode* reverseListRec(ListNode* &prev,ListNode* &curr ){
+            if(curr==NULL){
+                return prev; // linked list ka naya head return karenge
+            }
+            ListNode* nextnode=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=nextnode;
+        return reverseListRec(prev,curr);
+    }
+
+    ListNode* reverseList(ListNode* head) {
+        // by recursion
+        ListNode* prev=NULL;
+        ListNode* curr=head;
+
+        reverseListRec(prev,curr);
+    
+        return prev;
+    }
+};
