@@ -1,0 +1,66 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+ ListNode* reverseListRec(ListNode* &prev,ListNode* &curr ){
+            if(curr==NULL){
+                return prev; // linked list ka naya head return karenge
+            }
+            ListNode* nextnode=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=nextnode;
+        return reverseListRec(prev,curr);
+    }
+
+ListNode* middleNode(ListNode* head) {
+      ListNode* slow=head;
+      ListNode* fast=head;
+      // solving using tortoise algorithm
+      // jab tak fast 2 steps nhi cover kar leta tab tab slow nhi badhega
+       while(fast->next!=NULL){
+           fast=fast->next;
+           if(fast->next!=NULL){
+               fast=fast->next;
+               slow=slow->next;
+           }
+       }
+       return slow;
+    }
+
+    bool isPalindrome(ListNode* head) {
+        // breaking ll in two equal halves
+        ListNode* temp=head;
+        ListNode* midnode=middleNode(head);
+        ListNode* head2=midnode->next;
+        midnode->next=NULL;
+
+        // reversing second half
+       ListNode* prev=NULL;
+        ListNode* curr=temp;
+
+       head2= reverseListRec(prev,head2);
+
+        //comparing data values of both ll
+        bool flag=true;
+        while(head2!=NULL){
+            if(temp->val!=head2->val){
+                flag=false;
+                break;
+            }
+            else{
+            temp=temp->next;
+           head2=head2->next;
+            }
+        }
+        return flag;
+    }
+};
