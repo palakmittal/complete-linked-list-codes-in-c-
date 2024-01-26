@@ -1,0 +1,26 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+
+// 1approach is if the address repeats then there is a loop in linkedlist. map is used if true repeats for same address which we have marked while visiting to that node then we say that there is a loop.
+    bool hasCycle(ListNode *head) {
+        map<ListNode*, bool> table;
+    ListNode* temp=head;
+    while(temp!=NULL){
+        if(table[temp]==false){
+            table[temp]=true;
+        }else{
+           return true;
+        }
+        temp=temp->next;
+    }
+return false;
+    }
+};
