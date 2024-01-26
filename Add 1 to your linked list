@@ -1,0 +1,78 @@
+// input=    1->2->8->7->null
+// output=   1->2->8->8->null
+
+// input=  9->9->9->null
+// output= 1->0->0->0->0->null
+
+
+// approach 
+// step1: reverse linked list
+// step2: 
+        //add 1 to data inside head node if carry=0 then no need to go further 
+        // if carry generated add to further node's data
+        // if carry is generated but you can only fill 1 digit inside node as in case of 999 then create a new node where you put data as carry inside that node
+//step3: reverse the linked list again
+
+
+
+// solution
+
+// class Node{
+//     public:
+//     int data;
+//     Node* next;
+//     Node(int data){
+//         this->data=data;
+//         this->next=NULL;
+//     }
+// };
+
+/*
+Node* reversell(Node* head){
+    Node* prev=NULL;
+    Node* curr=head;
+    while(curr!=NULL){
+        Node* temp=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=temp;
+    }
+    head=prev;
+    return prev;
+}
+
+Node* adding_one(Node* head){
+    //step1
+    head = reversell(head);
+    //step2
+    int carry=1;
+   Node* temp=head;
+   while(temp->next!=NULL){
+    int totalsum= temp->data+ carry;
+    int digit= totalsum % 10;
+    temp->data=digit;
+    carry=totalsum/10;
+    temp=temp->next;
+    if(carry==0){
+        break;
+    }
+   }
+
+          if(carry!=0){
+               int totalsum= temp->data+ carry;
+               int digit= totalsum % 10;
+               temp->data=digit;
+               carry=totalsum/10;
+
+              if(carry!=0){
+              Node* newnode= new Node(carry);
+              temp->next=newnode;
+                 }   
+              }
+
+//step3
+ head= reversell(head);
+return head;
+}
+
+*/
