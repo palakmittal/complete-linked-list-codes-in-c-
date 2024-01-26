@@ -1,0 +1,35 @@
+// leetcode=141
+
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+
+// 2approach is if the slow and fast points to same node. using tortoise-hare algorithm
+    bool hasCycle(ListNode *head) {
+        
+    ListNode* slow=head;
+    ListNode* fast=head;
+    //traversing slow and fast pointers
+    while(fast!=NULL){
+        fast=fast->next;
+        if(fast!=NULL){
+            fast=fast->next;
+            slow=slow->next;
+        }
+   // check loop
+      if(fast==slow){
+          return true;
+      }
+
+    }
+return false;
+    }
+};
