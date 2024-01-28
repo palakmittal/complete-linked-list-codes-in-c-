@@ -1,0 +1,9 @@
+@QUESTION   quick sort is best for linked list or arrays? why?
+@QUESTION   MERGE sort is best for linked list or arrays? why?
+
+
+Quick sort is generally not considered suitable for sorting linked lists due to its reliance on random access to elements, which is not efficient in linked list structures. Quick sort's main advantage lies in its ability to rearrange elements in arrays quickly by swapping them, but this random access is not a strength when it comes to linked lists.
+
+Alternatively, merge sort is often a preferred choice for linked lists due to its ability to efficiently sort linked list elements without requiring random access. Merge sort works well with linked lists because it can easily split the list into sub-lists, sort them, and then merge them back together.
+
+In summary, while quick sort is efficient for arrays due to its ability to easily access and swap elements, merge sort is typically the better choice for linked lists due to its efficient handling of non-contiguous elements.
